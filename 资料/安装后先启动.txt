@@ -1,0 +1,9 @@
+安装后先启动
+start.bat（Windows）和 start.sh（Mac/Linux）
+
+后续开机
+1.启动数据库·：net start MySQL80
+2.后端启动指令：python app.py
+3.访问链接：http://localhost:5000
+
+后续需要初始化服务器输入：数据库初始化：python init_db.py

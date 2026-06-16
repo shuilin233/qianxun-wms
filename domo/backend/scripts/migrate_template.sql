@@ -1,0 +1,40 @@
+-- ============================================
+-- 数据库迁移脚本模板
+-- 命名约定: migrate_YYYYMMDD_describe.sql
+-- 每次表结构变更新建一个文件，按日期排序
+-- ============================================
+
+-- ============================================
+-- 示例: v2.1 给入库单增加备注字段
+-- ============================================
+-- ALTER TABLE inbound_order
+--   ADD COLUMN remark VARCHAR(255) DEFAULT '' COMMENT '备注' AFTER supplier;
+
+-- ============================================
+-- 示例: v2.2 商品表增加条形码字段
+-- ============================================
+-- ALTER TABLE product
+--   ADD COLUMN barcode VARCHAR(30) DEFAULT '' COMMENT '条形码' AFTER code;
+
+-- ============================================
+-- 示例: 增加盘点单表
+-- ============================================
+-- CREATE TABLE IF NOT EXISTS check_order (
+--     id          INT AUTO_INCREMENT PRIMARY KEY,
+--     order_no    VARCHAR(30) NOT NULL UNIQUE,
+--     operator_id INT NOT NULL,
+--     status      VARCHAR(20) DEFAULT 'pending',
+--     create_time DATETIME DEFAULT CURRENT_TIMESTAMP,
+--     FOREIGN KEY (operator_id) REFERENCES user(id)
+-- ) ENGINE=InnoDB COMMENT='盘点单';
+--
+-- CREATE TABLE IF NOT EXISTS check_detail (
+--     id         INT AUTO_INCREMENT PRIMARY KEY,
+--     order_id   INT NOT NULL,
+--     product_id INT NOT NULL,
+--     book_qty   INT NOT NULL COMMENT '账面库存',
+--     real_qty   INT NOT NULL COMMENT '实际库存',
+--     diff_qty   INT NOT NULL COMMENT '差异',
+--     FOREIGN KEY (order_id) REFERENCES check_order(id) ON DELETE CASCADE,
+--     FOREIGN KEY (product_id) REFERENCES product(id)
+-- ) ENGINE=InnoDB COMMENT='盘点明细';

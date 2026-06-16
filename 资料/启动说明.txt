@@ -1,0 +1,65 @@
+千寻仓库管理系统 — 启动说明
+========================================
+
+前置条件
+--------
+1. 已安装 Python 3.9+
+2. 已安装 MySQL 8.0+，且 MySQL 服务已启动
+3. MySQL 中已创建名为 warehouse 的数据库（如未创建，执行 CREATE DATABASE warehouse DEFAULT CHARSET utf8mb4;）
+
+========================================
+
+首次启动步骤
+--------
+1. 进入后端目录
+   cd domo\backend
+
+2. 复制环境配置文件
+   copy .env.example .env
+   然后打开 .env，将 DB_PASSWORD 改成你自己的 MySQL 密码
+   （密码为空的话保持 DB_PASSWORD= 即可）
+
+3. 安装 Python 依赖
+   pip install -r requirements.txt
+
+4. 初始化数据库（建表 + 导入测试数据）
+   python init_db.py
+
+5. 启动后端服务
+   python app.py
+
+6. 访问系统
+   打开浏览器，访问 http://localhost:5000
+
+========================================
+
+测试账号
+--------
+账号         密码      角色
+admin       abc123     管理员
+zhangsan    112233     操作员
+lisi        123456     操作员
+
+========================================
+
+一键启动（可选）
+--------
+Windows：双击 start.bat
+Mac/Linux：./start.sh
+
+========================================
+
+运行自动化测试
+--------
+cd domo
+pip install requests
+python test_api.py
+
+========================================
+
+后续开机
+--------
+1. net start MySQL80
+2. cd domo\backend
+3. python app.py
+4. 访问 http://localhost:5000

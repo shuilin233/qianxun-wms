@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>千寻仓库管理系统</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- ECharts 5 -->
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+  <!-- 自定义样式 -->
+  <link rel="stylesheet" href="css/tailwind-fallback.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-slate-100 text-slate-800">
+
+  <!-- ==================== Toast 容器 ==================== -->
+  <div id="toast-container"></div>
+
+  <!-- ==================== 模态框 ==================== -->
+  <div id="modal-overlay" class="modal-overlay hidden fixed inset-0 bg-black bg-opacity-40 flex items-start justify-center pt-24">
+    <div class="modal-box bg-white rounded-xl shadow-xl w-full max-w-lg mx-4">
+      <div class="flex items-center justify-between px-6 py-4 border-b">
+        <h3 id="modal-title" class="text-lg font-semibold text-slate-800"></h3>
+        <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600 text-xl">&times;</button>
+      </div>
+      <div id="modal-content" class="px-6 py-4"></div>
+      <div id="modal-footer" class="px-6 py-4 border-t flex justify-end gap-2 bg-gray-50 rounded-b-xl"></div>
+    </div>
+  </div>
+
+  <!-- ==================== 登录页（未登录时显示） ==================== -->
+  <div id="login-shell" class="hidden min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-600 to-blue-800">
+    <div id="login-page-content" class="w-full max-w-md"></div>
+  </div>
+
+  <!-- ==================== 应用主框架（登录后显示） ==================== -->
+  <div id="app-shell" class="hidden">
+
+    <!-- 侧边栏 -->
+    <aside class="sidebar bg-slate-900 text-white flex flex-col">
+      <div class="system-title px-6 py-5 border-b border-slate-700">
+        <h1 class="text-lg font-bold flex items-center gap-2">
+          <i class="fas fa-warehouse text-blue-400"></i>
+          <span>千寻仓库管理</span>
+        </h1>
+      </div>
+
+      <nav class="flex-1 py-4 space-y-1 px-3" id="sidebar-nav"></nav>
+
+      <div class="px-3 py-4 border-t border-slate-700 text-xs text-slate-500 text-center">
+        &copy; 2026 WMS v1.0
+      </div>
+    </aside>
+
+    <!-- 顶部栏 -->
+    <header class="topbar shadow-sm">
+      <div class="flex items-center gap-3">
+        <i class="fas fa-bars text-slate-400 md:hidden"></i>
+        <span id="page-title" class="text-lg font-semibold text-slate-700">首页</span>
+      </div>
+      <div class="flex items-center gap-4">
+        <span class="text-sm text-slate-500">
+          <i class="fas fa-user-circle mr-1"></i>
+          <span id="current-user-name">用户</span>
+        </span>
+        <button onclick="logout()" class="btn bg-slate-100 text-slate-600 hover:bg-slate-200 text-sm">
+          <i class="fas fa-sign-out-alt"></i> 退出
+        </button>
+      </div>
+    </header>
+
+    <!-- 主内容区 -->
+    <main class="main-content p-6">
+      <div id="main-page-content"></div>
+    </main>
+
+  </div>
+
+  <!-- ==================== JS 脚本（按依赖顺序引入） ==================== -->
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/pages/login.js"></script>
+  <script src="js/pages/dashboard.js"></script>
+  <script src="js/pages/product.js"></script>
+  <script src="js/pages/inbound.js"></script>
+  <script src="js/pages/outbound.js"></script>
+  <script src="js/pages/stock.js"></script>
+  <script src="js/pages/record.js"></script>
+  <script src="js/pages/report.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- 初始化侧边栏导航 -->
+  <script>
+    (function initNav() {
+      var items = [
+        { hash: 'dashboard', icon: 'fa-tachometer-alt', label: '首页' },
+        { hash: 'products',  icon: 'fa-box',            label: '商品管理' },
+        { hash: 'inbound',   icon: 'fa-sign-in-alt',     label: '入库管理' },
+        { hash: 'outbound',  icon: 'fa-sign-out-alt',    label: '出库管理' },
+        { hash: 'stock',     icon: 'fa-warehouse',       label: '库存查询' },
+        { hash: 'records',   icon: 'fa-list-alt',        label: '库存流水' },
+        { hash: 'report',    icon: 'fa-chart-bar',       label: '数据报表' },
+      ];
+      var nav = document.getElementById('sidebar-nav');
+      nav.innerHTML = items.map(function(item) {
+        return '<div class="nav-item flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm text-slate-300" data-hash="'+item.hash+'" onclick="window.location.hash=\''+item.hash+'\'">'
+          + '<i class="fas '+item.icon+' w-5 text-center"></i>'
+          + '<span class="nav-label">'+item.label+'</span>'
+          + '</div>';
+      }).join('');
+    })();
+  </script>
+</body>
+</html>
