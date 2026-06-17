@@ -23,6 +23,23 @@
 **自动化测试** — 覆盖认证、商品、入库、出库、库存、流水的全 API 兼容测试脚本。
 
 ---
+## 页面截图
+<img width="1908" height="992" alt="image" src="https://github.com/user-attachments/assets/42298008-9c9e-4162-b327-6a16588af4e0" />
+
+<img width="1906" height="1001" alt="image" src="https://github.com/user-attachments/assets/669327a1-89b5-4d17-a172-cb8b636c71a5" />
+
+<img width="1919" height="1078" alt="image" src="https://github.com/user-attachments/assets/d8badcb6-3861-4175-b874-714fc4ce1fd6" />
+
+<img width="1919" height="1072" alt="image" src="https://github.com/user-attachments/assets/6689d75f-1c99-4d98-b31e-3fda3405625c" />
+
+<img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/89684e03-f85d-4fa3-b1f4-eba337777877" />
+
+<img width="1914" height="1075" alt="image" src="https://github.com/user-attachments/assets/49890ed0-b40c-4132-9f6d-c4b423ccd72f" />
+
+<img width="1916" height="1079" alt="image" src="https://github.com/user-attachments/assets/add7d5fe-36f4-490f-aa3e-9858b483b6ed" />
+
+
+---
 
 ## 技术栈
 
