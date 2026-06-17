@@ -32,7 +32,7 @@
 | 数据库 | MySQL 8.0（8 张表，InnoDB 引擎，utf8mb4） |
 | 认证 | JWT（flask-jwt-extended），bcrypt 密码哈希 |
 | 前端 | 原生 JavaScript SPA / Tailwind CSS / Font Awesome 6 / ECharts 5 |
-| 测试 | Python requests + 自定义断言框架 |
+| 测试 | Python requests + Selenium |
 
 ---
 
